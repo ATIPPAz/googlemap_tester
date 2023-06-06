@@ -6,7 +6,7 @@
   <iframe :srcdoc="html" frameborder="0" width="700px" height="600px"></iframe>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, onUnmounted } from 'vue'
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -24,12 +24,15 @@ const html = `<!DOCTYPE html>
 </body>
 </html>`
 const data = ref<any>('ttest')
-function getData(e) {
-  data.value = e
+function getData(e: any) {
+  data.value = e.data
   console.log(data.value)
 }
 const a = computed(() => data.value || {})
 onMounted(() => {
-  window.getParentData = getData
+  window.addEventListener('message', getData)
+})
+onUnmounted(() => {
+  window.removeEventListener('message', getData)
 })
 </script>

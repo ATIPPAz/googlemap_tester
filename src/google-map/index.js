@@ -92,7 +92,7 @@ async function loadMap() {
   }, 2000)
 }
 function sendParentData(data) {
-  window.parent.getParentData(data)
+  window.parent.postMessage(data, '*')
 }
 // สร้างฟังก์ชันสำหรับเริ่มต้นแผนที่
 function successLoadLocation(position) {
