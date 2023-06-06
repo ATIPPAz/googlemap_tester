@@ -49,6 +49,7 @@ function initMap() {
   // สร้างตัวแปรสำหรับตำแหน่งเครื่องหมายบนแผนที่
   var markerOptions = {
     position: location,
+    draggable: true,
     map: map,
     title: jsonData.results[0].formatted_address,
   };
@@ -60,10 +61,13 @@ function initMap() {
     map: map,
     title: jsonData.results[0].formatted_address,
   };
-  google.maps.event.addListener(marker, 'dragend', (e) => {
-    console.log(e);
+  marker.addListener('dragend', (e) => {
+    const position = marker.getPosition();
+    console.log('lat: ' + position.lat());
+    console.log('lng: ' + position.lng());
   });
   //   marker;
+
   console.log(google.maps.event);
 }
 
