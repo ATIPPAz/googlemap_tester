@@ -65,6 +65,15 @@ function initMap() {
     const position = marker.getPosition();
     console.log('lat: ' + position.lat());
     console.log('lng: ' + position.lng());
+    const dec = new google.maps.Geocoder();
+    dec.geocode({ location: position }, (res, status) => {
+      res.forEach((element) => {
+        element.address_components.forEach((e) => {
+          console.log('short_name:' + e.short_name);
+          console.log('long_name:' + e.long_name);
+        });
+      });
+    });
   });
   //   marker;
 
