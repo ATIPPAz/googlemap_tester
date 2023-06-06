@@ -1,6 +1,6 @@
 <template>
   logging in vue <br />
-  build name = {{ a.Bname }} <br />
+  build name = {{ a.name }} <br />
   LAT = {{ a.lat }} <br />
   LNG = {{ a.lng }}<br />
   <iframe :srcdoc="html" frameborder="0" width="700px" height="600px"></iframe>
