@@ -22,6 +22,7 @@ async function loadMap() {
     const dec = new google.maps.Geocoder()
     await dec.geocode({ location: latlng }, async (res, status) => {
       document.getElementById('buildingName').textContent = await res[0].formatted_address
+      sendParentData({ lat: location.lat(), lng: location.lng(), name: res[0].formatted_address })
     })
     // สร้างตัวแปรสำหรับตั้งค่าแผนที่
     var mapOptions = {
@@ -78,7 +79,7 @@ async function loadMap() {
       const dec = new google.maps.Geocoder()
       dec.geocode({ location: position }, (res, status) => {
         document.getElementById('buildingName').textContent = res[0].formatted_address
-        sendData.Bname = res[0].formatted_address
+        sendData.name = res[0].formatted_address
         // res.forEach((element) => {
         //   element.address_components.forEach((e) => {
         //     console.log('short_name:' + e.short_name);
