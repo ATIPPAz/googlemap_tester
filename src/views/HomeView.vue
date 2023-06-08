@@ -11,6 +11,7 @@
       <!-- <BaseGoogleMap /> -->
     </div>
   </div>
+  <div></div>
 </template>
 <script setup lang="ts">
 import GoogleMapEdit from '@/components/googlemap/GoogleMapEdit.vue'
