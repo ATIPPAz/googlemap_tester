@@ -116,7 +116,9 @@ async function setupMap() {
   const dec = new google.maps.Geocoder()
   const latlng = { lat: lat.value, lng: lng.value }
   await dec.geocode({ location: latlng }, async (res: any, status) => {
+    console.log('geo')
     console.log(res)
+
     name.value =
       props.isView && props.dataGGMap ? props.dataGGMap.name : await res[0].formatted_address
   })
